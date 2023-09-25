@@ -1,0 +1,42 @@
+<% @Song.tags.each do |tag| %>
+    <%= tag.name %>
+<% end %>
+
+<% @Song.genres.each do |g| %>
+    <%= g.name %>
+<% end %>
+
+<% @Song.situations.each do |s| %>
+    <%= s.name %>
+<% end %>
+
+<h3>Song詳細</h3>
+<%= link_to "投稿者のマイページ", user_path(@song.user) %>
+<div class="Song">
+  <p><%= @Song.body %></p>
+  <p><%= @Song.created_at %></p>
+    <% if user_signed_in? %>
+      <% if current_user.already_liked?(@Song) %>
+        <%= link_to Song_like_path(@Song), method: :delete do %>
+            <i class="fas fa-heart"></i><%= @song.likes.count %>
+          <p>いいねを取り消す</p><%= @Song.likes.count %>
+        <% end %>
+      <% else %>
+      <i class="far fa-heart"></i><%= @song.likes.count %>
+        <%= link_to Song_likes_path(@Song), method: :post do %>
+            <i class="far fa-heart"></i><%= @song.likes.count %>
+          <p>いいね</p><%= @Song.likes.count %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p>いいねの数 = </p><%= @Song.likes.count %>
+    <% end %>
+  <%= link_to "編集する", edit_Song_path(@Song.id) %>
+</div>
+
+<h2>いいねしたユーザー</h2>
+<% @Song.liked_users.each do |user| %>
+  <li><%= user.email %></li>
+<% end %>
+
+<%= link_to "Song一覧に戻る", Songs_path %>

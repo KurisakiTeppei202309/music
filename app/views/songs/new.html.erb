@@ -1,0 +1,52 @@
+<h1>自分の好きな曲をみんなと共有しよう！</h1>
+<h3>新規投稿ページ</h3>
+<%= form_for @Song do |f| %>
+
+
+  <div class="field">
+    <%= f.label :曲名 %>
+    <%= f.text_field :name, :size => 30 %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :アーティスト名 %>
+    <%= f.text_field :artist, :size => 30 %>
+  </div>
+
+  <h5>ジャンル:</h5>
+  <div class='form-group'>
+    <%= f.collection_select :genre_ids, Genre.all, :id, :name, include_blank: "ジャンルを選択"  %>
+  </div>
+
+
+  
+
+  <h5>気分:</h5>
+  <div class='form-group'>
+    <%= f.collection_select :tag_ids, Tag.all, :id, :name, include_blank: "気分を選択"  %>
+  </div>
+
+
+  
+  <h5>場面:</h5>
+  <div class='form-group'>
+    <%= f.collection_select :situation_ids, Situation.all, :id, :name, include_blank: "場面を選択"  %>
+  </div>
+
+  
+  <div class="field">
+    <%= f.label :URL %>
+    <%= f.text_field :url, :size => 30 %>
+  </div>
+
+
+
+
+
+
+
+  <%= f.submit "投稿する" %>
+<% end %>
+
+<%= link_to "一覧に戻る", songs_path %>

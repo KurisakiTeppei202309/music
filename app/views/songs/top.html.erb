@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<%= stylesheet_link_tag 'top', :media => "all" %>
+
+<html>
+<div class="first-block">
+<h2>新たなリズム<br>
+    新たな友達との出会い
+</h2>
+<li><%= link_to "新規登録はこちら", new_user_registration_path%></li>
+</div>
+
+
+<div class="second-block">
+<h2>
+ジャンル 気分 場面を検索して<br>新たな曲に出会える！
+</h2>
+
+<li><%= link_to "新たな曲を見つけよう", songs_path %></li>
+</div>
+
+
+<div class="third-block">
+<h2>
+自分の好きな曲を<br>
+みんなと共有しよう！
+</h2>
+<li><%= link_to "好きな曲を投稿する", new_song_path %></li>
+
+</div>
+
+<div class="fourth-block">
+<h2>
+音楽の価値観が合う人と<br>つながれる♪
+</h2>
+<li><%= link_to "DMでつながろう", rooms_path %></li>
+</div>
+
+</html>

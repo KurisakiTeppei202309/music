@@ -1,0 +1,52 @@
+.first-block{
+    background-color:#FFD700;
+    background-image:url(https://images.unsplash.com/photo-1505740420928-5e560c06d30e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxNTgwfDB8MXxzZWFyY2h8MTZ8fG11c2ljfGVufDB8fHx8MTY5NTUyNTcwMXww&ixlib=rb-4.0.3&q=80&w=400);
+    background-size:  contain;
+    height: 350px;
+    padding-top: 20px;
+    text-align: left;
+    justify-content: flex-top;
+    font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ",
+    Meiryo, "ＭＳＰゴシック", sans-serif
+}
+    
+
+.second-block{
+    background-color:#814721;
+    height:250px;
+    padding-top: 20px;
+    text-align: left;
+    justify-content: flex-top;
+    font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ",
+    Meiryo, "ＭＳＰゴシック", sans-serif
+    
+}
+
+.third-block{
+    background-color:#FFD700;
+    height:250px;
+    padding-top: 20px;
+    text-align:right;
+    justify-content: flex-start;
+    font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ",
+    Meiryo, "ＭＳＰゴシック", sans-serif
+    
+}
+.fourth-block{
+    background-color:#814721;
+    height:250px;
+    padding-top: 20px;
+    text-align:left;
+    justify-content: flex-start;
+    font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ",
+    Meiryo, "ＭＳＰゴシック", sans-serif
+    
+}
+
+.first-block>li{
+    width: contain;
+    color: #fff;
+    background-color: #814721;
+    border-radius: 100vh;
+    text-decoration: none;
+}

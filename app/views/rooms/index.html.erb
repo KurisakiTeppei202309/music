@@ -1,0 +1,20 @@
+<% if @room_lists.empty? %>
+  <%= @room_lists_none %>
+<% else %>
+  <div class="group-list">
+    <ul class="group-list-table">
+      <% @room_lists.each do |room| %>
+        <div class="group-list-table-each-group">
+          <%= link_to "/rooms/#{room.id}" do %>
+            <div class="a">
+              <div class="group-name">
+                <%= room.name %>（<%= room.users.count %>人）
+              </div>
+              <br>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

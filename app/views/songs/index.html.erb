@@ -1,0 +1,87 @@
+<h1>新しい曲に出会おう！</h1>
+  
+<%= form_tag songs_path, method: :get, class: 'boards__searchForm' do %>
+  <%= select_tag :genre_id,
+                  options_from_collection_for_select(Genre.all, :id, :name, params[:genre_id]),
+                 {
+                    prompt: 'ジャンルを選択',
+                    
+                   }
+    %>
+
+  <%= select_tag :tag_id,
+                 options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                 {
+                   prompt: '気分を選択',
+                  
+                 }
+  %>
+
+  <%= select_tag :situation_id,
+                 options_from_collection_for_select(Situation.all, :id, :name, params[:situation_id]),
+                 {
+                   prompt: '場面を選択',
+                  
+                 }
+  %>
+
+
+  <%= submit_tag '検索する'  %>
+<% end %>
+
+
+
+
+<div class="songs-container">
+  <% @Songs.each do |t| %>
+    <div class="song">
+      <%= image_tag t.user.image_url, size: "250x200" if t.user.image? %>
+      <%= t.name %>
+      <%= t.artist %>
+      
+    </div>
+      <% t.genres.each do |g| %>
+      <%= g.name %>
+      <% end %> 
+    <% t.tags.each do |tag| %>
+      <%= tag.name %>
+      <% end %> 
+    <% t.situations.each do |s| %>
+      <%= s.name %>
+      <% end %>
+
+      <%= t.url %>
+
+      <%= t.user.email %>
+
+    <% if user_signed_in? %>  
+        <% if current_user.already_liked?(t) %>
+          <%= link_to song_like_path(id: t.id, song_id: t.id), method: :delete do %>
+          <i class="fas fa-heart"></i><%= t.likes.count %>
+        <% end %>
+        <% else %>
+          <%= link_to song_likes_path(id: t.id, song_id: t.id), method: :post do %>
+          <i class="far fa-heart"></i><%= t.likes.count %>
+        <% end %>
+    <% end %>
+  <% else %>
+  <i class="fas far-heart"><%= t.likes.count %>
+  <% end %>
+  <%= link_to "投稿者のマイページ", user_path(t.user) %>
+
+  <% if user_signed_in? && current_user.id == t.user_id %>
+  <%= link_to "削除する", song_path(t.id), method: :delete %>
+  <% end %>
+
+  <% end %>
+
+  
+  
+  
+ <br> <%= link_to "自分の好きな曲をみんなと共有しよう！", new_song_path %>
+      <%= link_to "新たな仲間を見つけよう", users_path %>
+      <%= link_to "DM一覧", rooms_path %>
+  
+  
+
+</div>
