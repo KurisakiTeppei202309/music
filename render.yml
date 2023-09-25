@@ -1,0 +1,22 @@
+databases:
+  - name: music_DB
+    databaseName: music_db
+    user: music
+    region: singapore
+
+services:
+  - type: web
+    name: music
+    env: ruby
+    region: singapore
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: music_DB
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+
